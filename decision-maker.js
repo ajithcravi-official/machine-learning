@@ -18,11 +18,4 @@ export default class DecisionMaker {
   think({ input, importance }) {
     return sigmoid(this.getMessageImportance(input, importance));
   }
-
-  learnFromMistake(calculated, actual) {
-    const mistake = calculated - actual;
-
-    // This mistake have to be removed and the knowledge should be updated
-    this.knowledge = this.knowledge - mistake;
-  }
 }
