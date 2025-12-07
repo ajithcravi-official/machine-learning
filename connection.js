@@ -5,10 +5,10 @@ export default class Connection {
     this.importance = importance;
   }
 
-  learnFromMistake(calculated, actual, input) {
-    const mistake = (calculated - actual) * input;
+  learnFromPast(calculated, actual, input) {
+    const mistake = calculated - actual;
 
     // This mistake have to be removed and the knowledge should be updated
-    this.importance = this.importance - mistake;
+    this.importance = this.importance - mistake * input;
   }
 }

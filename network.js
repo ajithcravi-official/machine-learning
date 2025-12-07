@@ -64,9 +64,9 @@ console.log(`King's response: ${kingResponse}`);
 
 // Learning from mistakes
 // Logging the learning process
-intelligenceMinisterToKing.learnFromMistake(1, kingResponse, dmResponse);
-intelligenceMinisterToKing.source.learnFromMistake(dmResponse, 1);
-intelligenceMinisterToKing.target.learnFromMistake(kingResponse, 1);
+intelligenceMinisterToKing.learnFromPast(1, kingResponse, dmResponse);
+intelligenceMinisterToKing.source.learnFromPast(dmResponse, 1);
+intelligenceMinisterToKing.target.learnFromPast(kingResponse, 1);
 
 console.log("\x1b[34m%s\x1b[0m", "\nLearnt Knowledge");
 console.log(`Intelligence Minister: ${intelligenceMinister.knowledge}`);
