@@ -1,6 +1,6 @@
-import DecisionMaker from "./decision-maker.js";
-import Connection from "./connection.js";
-import Scenario from "./scenario.js";
+import { DecisionMaker } from "./decision-maker.js";
+import { Connection } from "./connection.js";
+import { Scenario } from "./scenario.js";
 
 const scenario = new Scenario({
   name: "Response to border activity",
@@ -8,7 +8,7 @@ const scenario = new Scenario({
     "The border scout reports activity level. The Intelligence Minister and the King must respond appropriately.",
   outputs: "Alert the forces, Ignore the report",
   parseOutputs: (output) => {
-    const outputMap = {
+    const outputMap: Record<number, string> = {
       0: "Ignore the report",
       1: "Alert the forces",
     };
@@ -38,7 +38,7 @@ const scoutToIntelligenceMinister = new Connection({
 });
 
 const intelligenceMinisterToKing = new Connection({
-  source: intelligenceMinister,
+  sourceName: intelligenceMinister.name,
   target: king,
   importance: importanceMap.intelligenceMinisterToKing,
 });
@@ -70,9 +70,19 @@ console.log(`King's response: ${kingResponse}`);
 
 // Learning from mistakes
 // Logging the learning process
-intelligenceMinisterToKing.learnFromPast(1, kingResponse, dmResponse);
-intelligenceMinisterToKing.source.learnFromPast(dmResponse, 1);
-intelligenceMinisterToKing.target.learnFromPast(kingResponse, 1);
+intelligenceMinisterToKing.learnFromPast({
+  calculated: 1,
+  actual: kingResponse,
+  input: dmResponse,
+});
+scoutToIntelligenceMinister.target.learnFromPast({
+  calculated: dmResponse,
+  actual: 1,
+});
+intelligenceMinisterToKing.target.learnFromPast({
+  calculated: kingResponse,
+  actual: 1,
+});
 
 console.log("\x1b[34m%s\x1b[0m", "\nLearnt Knowledge");
 console.log(`Intelligence Minister: ${intelligenceMinister.knowledge}`);

@@ -1,5 +1,20 @@
-export default class Scenario {
-  constructor({ name, description, outputs, parseOutputs }) {
+export class Scenario {
+  name: string;
+  description: string;
+  outputs: string;
+  parseOutputs: (output: number) => string;
+
+  constructor({
+    name,
+    description,
+    outputs,
+    parseOutputs,
+  }: {
+    name: string;
+    description: string;
+    outputs: string;
+    parseOutputs: (output: number) => string;
+  }) {
     this.name = name;
     this.description = description;
     this.outputs = outputs;
