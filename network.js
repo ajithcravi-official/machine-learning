@@ -31,13 +31,19 @@ const intelligenceMinister = new DecisionMaker({
 const king = new DecisionMaker({ name: "King", knowledge: 0.01 });
 
 // Defining the connections between individuals
+const scoutToIntelligenceMinister = new Connection({
+  sourceName: "Scout",
+  target: intelligenceMinister,
+  importance: importanceMap.scoutToIntelligenceMinister,
+});
+
 const intelligenceMinisterToKing = new Connection({
   source: intelligenceMinister,
   target: king,
   importance: importanceMap.intelligenceMinisterToKing,
 });
 
-const dmResponse = intelligenceMinisterToKing.source.think({
+const dmResponse = scoutToIntelligenceMinister.target.think({
   input: 1,
   importance: importanceMap.scoutToIntelligenceMinister,
 }); // Scout gives input directly
