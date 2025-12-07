@@ -27,4 +27,4 @@ Anyone interested in Neural Networks but don't know where to start can take up t
 ## Prerequisites
 
 1. Basic coding knowledge
-2. Nodejs as this series is based on Nodejs
+2. Nodejs, as this series is based on Nodejs
