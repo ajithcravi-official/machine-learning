@@ -51,3 +51,9 @@ Below is how the scenario looks like assuming some values based on rules, imprta
 5. **Bias:** The prior knowlege that a node has on the context even before the input is received.
 6. **Weighted Input:** Scaled value of the input. Mathematically `Input x Weight`
 7. **Activation function:** The thought function of the decision maker. For detailed explanation, check the [Working Principle](#working-principle) section.
+
+## Explore Yourself
+
+1. How to choose the activtation function?
+2. Can the Intelligence Minister and the King have two different activation functions?
+3. What happens if I choose a wrong activation function?
